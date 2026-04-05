@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 
@@ -78,22 +79,24 @@ export default function KeyAreas() {
                   {area.description}
                 </p>
 
-                <motion.button
-                  whileHover="hover"
-                  className="group flex items-center space-x-2 text-primary font-bold text-sm tracking-wide uppercase"
-                >
-                  <span className="border-b-2 border-transparent transition-colors group-hover:border-primary">
-                    Learn More
-                  </span>
-                  <motion.div
-                    variants={{
-                      hover: { x: 5 }
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                <Link href="/programs">
+                  <motion.button
+                    whileHover="hover"
+                    className="group flex items-center space-x-2 text-primary font-bold text-sm tracking-wide uppercase"
                   >
-                    <ArrowRight size={18} />
-                  </motion.div>
-                </motion.button>
+                    <span className="border-b-2 border-transparent transition-colors group-hover:border-primary">
+                      Learn More
+                    </span>
+                    <motion.div
+                      variants={{
+                        hover: { x: 5 }
+                      }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      <ArrowRight size={18} />
+                    </motion.div>
+                  </motion.button>
+                </Link>
               </motion.div>
 
             </div>

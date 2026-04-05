@@ -5,6 +5,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 import { RippleButton } from "@/components/ui/RippleButton";
 import Image from "next/image";
+import Link from "next/link";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -118,20 +119,24 @@ export default function Hero() {
 
           {/* CTAs */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
-            <RippleButton
-              className="w-full sm:w-auto px-8 py-3.5 bg-primary text-white font-bold rounded-lg shadow-lg border border-transparent transition-colors hover:bg-primary-light"
-            >
-              <span>Learn More</span>
-              <ArrowRight size={18} />
-            </RippleButton>
+            <Link href="/about" className="w-full sm:w-auto">
+              <RippleButton
+                className="w-full px-8 py-3.5 bg-primary text-white font-bold rounded-lg shadow-lg border border-transparent transition-colors hover:bg-primary-light"
+              >
+                <span>Learn More</span>
+                <ArrowRight size={18} />
+              </RippleButton>
+            </Link>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-white/80 text-white font-bold rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center"
-            >
-              Support Our Work
-            </motion.button>
+            <Link href="/contact" className="w-full sm:w-auto">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full px-8 py-3.5 bg-transparent border-2 border-white/80 text-white font-bold rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center"
+              >
+                Support Our Work
+              </motion.button>
+            </Link>
           </motion.div>
         </motion.div>
 
