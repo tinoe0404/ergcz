@@ -3,6 +3,39 @@ export const SITE_DATA = {
   fullName: "Educating Rural Girl Child in Zimbabwe",
   tagline: "Empowering Rural Girls Through STEM Education",
   missionStatement: "To bridge the educational gap for rural girls in Zimbabwe by providing access to quality STEM education, resources, and mentorship, empowering them to become leaders and innovators in their communities.",
+  visionStatement: "A Zimbabwe where every rural girl child has the opportunity, resources, and self-belief to excel in STEM fields and become a leader in her community.",
+  story: "Founded out of a deep recognized need in rural communities, ERGCZ began with a simple but powerful realization: talent is universal, but opportunity is not. We noted that rural Zimbabwean girls faced multiple intersecting barriers to receiving quality STEM education. A group of passionate educators and professionals came together to bridge this gap, determined to build a supportive ecosystem that empowers these young women to unlock their full potential and transform their communities.",
+  barriers: [
+    { title: "Cultural Beliefs", icon: "refresh-cw" },
+    { title: "Lack of Resources", icon: "x-circle" },
+    { title: "Limited Mentorship", icon: "user-minus" },
+    { title: "Political Instability", icon: "alert-triangle" },
+  ],
+  values: "Integrity, Empowerment, Excellence, Community, and Innovation.",
+  aims: [
+    "To provide comprehensive STEM education and materials to marginalized rural schools.",
+    "To establish robust mentorship networks connecting rural students with accomplished female professionals.",
+    "To advocate for policy changes that support gender parity in educational resource allocation.",
+  ],
+  objectives: [
+    "Equip 50 rural schools with modern science laboratory equipment by 2030.",
+    "Train 200 rural teachers in advanced STEM pedagogical methodologies.",
+    "Award full scholarships to 500 outstanding students to pursue higher education.",
+  ],
+  organogram: {
+    board: {
+      title: "Board of Directors",
+      roles: ["Chairperson", "Vice-Chairperson", "Secretary", "Treasurer", "Committee Members"],
+    },
+    executive: {
+      title: "Executive Team",
+      roles: ["Executive Director", "Head of Programs", "Head of Finance", "M&E Coordinator"],
+    },
+    ancillary: {
+      title: "Ancillary Staff",
+      roles: ["Field Officers", "Community Mobilizers", "Administrative Assistants", "Volunteers"],
+    }
+  },
   contact: {
     email: "info@ergcz.org",
     phone: "+263 77 123 4567",
