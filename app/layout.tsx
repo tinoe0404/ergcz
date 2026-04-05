@@ -14,6 +14,8 @@ const body = Plus_Jakarta_Sans({
   variable: '--font-plus-jakarta-sans',
 });
 
+import LayoutWrapper from '@/components/layout/LayoutWrapper';
+
 export const metadata: Metadata = {
   title: {
     template: `%s | ${SITE_DATA.orgName}`,
@@ -36,10 +38,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="font-body text-slate bg-sky antialiased flex flex-col min-h-screen">
-        <main className="flex-grow">
-          {children}
-        </main>
+      <body className="font-body text-slate bg-sky antialiased">
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
