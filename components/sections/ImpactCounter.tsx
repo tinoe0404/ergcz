@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { Counter } from "@/components/ui/Counter";
 

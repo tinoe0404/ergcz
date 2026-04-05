@@ -6,7 +6,7 @@ import { RefreshCw, XCircle, UserMinus, AlertTriangle } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 import Image from "next/image";
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, React.ElementType> = {
   "refresh-cw": RefreshCw,
   "x-circle": XCircle,
   "user-minus": UserMinus,

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { SITE_DATA } from "@/constants/data";
 import { BookOpen, Users, Laptop, Heart } from "lucide-react";
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, React.ElementType> = {
   "book-open": BookOpen,
   "users": Users,
   "laptop": Laptop,

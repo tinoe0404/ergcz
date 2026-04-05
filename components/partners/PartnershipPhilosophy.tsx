@@ -19,9 +19,9 @@ export default function PartnershipPhilosophy() {
           <div className="absolute top-[-80px] left-[-40px] font-display text-[200px] leading-none text-primary/5 select-none pointer-events-none z-0">
             &ldquo;
           </div>
-          <h2 className="font-display italic text-3xl md:text-[36px] text-primary relative z-10 leading-tight">
-            "No single organisation can educate a nation — but together, we can."
-          </h2>
+            <blockquote className="font-display text-3xl md:text-4xl text-primary leading-tight italic relative z-10 p-6 md:p-8">
+              &ldquo;No single organisation can educate a nation — but together, we can.&rdquo;
+            </blockquote>
         </motion.div>
 
         <motion.div 

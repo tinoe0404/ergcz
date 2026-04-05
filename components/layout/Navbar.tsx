@@ -7,6 +7,7 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-
 import { Menu, X } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 import { cn } from "@/lib/utils";
+import { useRef } from "react";
 
 const NavLink = ({ link, isActive }: { link: { name: string; href: string }; isActive: boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -46,15 +47,46 @@ export default function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 20);
   });
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) setIsMobileMenuOpen(false);
+      if (e.key === 'Tab' && isMobileMenuOpen && menuRef.current) {
+        const focusableElements = menuRef.current.querySelectorAll('a[href], button');
+        const first = focusableElements[0] as HTMLElement;
+        const last = focusableElements[focusableElements.length - 1] as HTMLElement;
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', handleKeyDown);
+      setTimeout(() => {
+        const first = menuRef.current?.querySelector('a[href]') as HTMLElement;
+        first?.focus();
+      }, 100);
+    } else {
+      document.body.style.overflow = '';
+      buttonRef.current?.focus();
+    }
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isMobileMenuOpen]);
 
   return (
     <>
@@ -106,8 +138,11 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <motion.button
+          ref={buttonRef}
           whileTap={{ scale: 0.9 }}
-          className="md:hidden z-20 text-navy"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          className="md:hidden z-20 text-navy focus:outline-none focus:ring-2 focus:ring-primary/50 rounded"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={28} className="text-white" /> : <Menu size={28} />}
@@ -118,6 +153,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            ref={menuRef}
             initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}

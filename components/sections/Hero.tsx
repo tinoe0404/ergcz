@@ -4,6 +4,7 @@ import { motion, Variants, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 import { RippleButton } from "@/components/ui/RippleButton";
+import Image from "next/image";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -59,10 +60,14 @@ export default function Hero() {
   return (
     <section className="relative w-full h-[100svh] min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* 1. Background Composition */}
-      <motion.div style={{ y }} className="absolute inset-x-0 -top-[400px] bottom-0 z-0 h-[calc(100svh+400px)]">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url("/images/hero/hero-main.jpg")' }}
+      <motion.div style={{ y }} className="absolute inset-x-0 -top-[400px] bottom-0 z-0 h-[calc(100svh+400px)] pointer-events-none">
+        <Image 
+          src="/images/hero/hero-main.jpg"
+          alt="Rural schoolgirls in Zimbabwe"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
         />
         {/* Gradient Overlay: Navy/70% to transparent horizontally */}
         <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/60 to-transparent" />
