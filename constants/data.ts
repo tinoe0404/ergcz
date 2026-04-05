@@ -119,6 +119,40 @@ export const SITE_DATA = {
       bio: "Expert in building relationships with rural community leaders to ensure program success.",
     },
   ],
+  partnershipPhilosophy: [
+    "ERGCZ believes that the barriers to rural STEM education are deeply interconnected. Addressing them requires a vast network of dedicated stakeholders working in unison—pooling resources, expertise, and community influence.",
+    "Our partnership framework is built on mutual accountability and shared vision. By working alongside government ministries, local leaders, educational bodies, and international sponsors, we ensure our interventions are both highly localized and globally scalable."
+  ],
+  partnerCategories: [
+    {
+      title: "Government Partners",
+      partners: [
+        { name: "Ministry of Primary and Secondary Education", description: "Curriculum oversight and school authorizations." },
+        { name: "Digital Innovation Authority", description: "ICT infrastructure support for rural hubs." }
+      ]
+    },
+    {
+      title: "Educational Institutions",
+      partners: [
+        { name: "University of Zimbabwe STEM Hub", description: "Advanced science mentorship networks." },
+        { name: "Midlands State University", description: "Teacher training and pedagogy labs." }
+      ]
+    },
+    {
+      title: "Civil Society",
+      partners: [
+        { name: "Women's Coalition of Zimbabwe", description: "Community safeguarding and advocacy." },
+        { name: "Rural Empowerment Trust", description: "Logistical frameworks for district outreach." }
+      ]
+    },
+    {
+      title: "International Partners",
+      partners: [
+        { name: "Global Education Fund", description: "Baseline program funding and scholarships." },
+        { name: "Tech for Good Initiative", description: "Laptops and tech laboratory provisioning." }
+      ]
+    }
+  ],
   partners: [
     {
       name: "Tech for Good",

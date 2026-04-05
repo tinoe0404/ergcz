@@ -3,29 +3,14 @@
 import { useRef, useEffect } from "react";
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 
+import { Counter } from "@/components/ui/Counter";
+
 const counters = [
   { value: 3000, suffix: "+", label: "Girls Reached" },
   { value: 10, suffix: "+", label: "Districts" },
   { value: 4, suffix: "", label: "Core Pillars" },
   { value: 5, suffix: "", label: "Work Areas" },
 ];
-
-const Counter = ({ to, suffix }: { to: number, suffix: string }) => {
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, Math.round);
-  const formatted = useTransform(rounded, (v) => v.toLocaleString() + suffix);
-  
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.5 });
-
-  useEffect(() => {
-    if (inView) {
-      animate(count, to, { duration: 2.5, ease: "easeOut" });
-    }
-  }, [inView, count, to]);
-
-  return <motion.span ref={ref}>{formatted}</motion.span>;
-};
 
 export default function ImpactCounter() {
   return (
