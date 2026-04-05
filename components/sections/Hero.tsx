@@ -59,7 +59,7 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 1000], [0, 400]);
 
   return (
-    <section className="relative w-full min-h-[100svh] flex items-center justify-center pt-24 pb-12 md:pt-16 md:pb-0 overflow-hidden">
+    <section className="relative w-full min-h-[100svh] flex flex-col justify-center pt-32 pb-40 md:py-40 overflow-visible">
       {/* 1. Background Composition wrapped to contain parallax without breaking mobile scroll */}
       <div className="absolute inset-0 overflow-hidden z-0">
         <motion.div style={{ y }} className="absolute inset-x-0 -top-[400px] bottom-0 z-0 h-[calc(100svh+400px)] pointer-events-none">
@@ -86,7 +86,7 @@ export default function Hero() {
       </div>
 
       {/* 2. Main Content */}
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col justify-center h-full">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col justify-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
