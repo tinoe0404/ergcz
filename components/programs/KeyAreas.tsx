@@ -32,7 +32,7 @@ export default function KeyAreas() {
                 </span>
 
                 <motion.div 
-                  className="relative z-10 w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden shadow-2xl group"
+                  className="relative z-10 w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden shadow-2xl group touch-pan-y"
                   whileHover={{ rotate: 1, y: -8 }}
                   drag="x"
                   dragConstraints={{ left: -15, right: 15 }}

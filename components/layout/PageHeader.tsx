@@ -53,7 +53,7 @@ export default function PageHeader({ title, subtitle, breadcrumb }: PageHeaderPr
         >
           <motion.h1 
             variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-            className="font-display text-5xl md:text-[56px] text-navy mb-6 leading-tight"
+            className="font-display text-4xl sm:text-5xl lg:text-[56px] text-navy mb-6 leading-tight max-w-[90vw]"
           >
             {title}
           </motion.h1>

@@ -140,7 +140,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-            className="fixed inset-0 z-40 bg-navy flex flex-col items-center justify-center space-y-8"
+            className="fixed inset-0 z-40 bg-navy flex flex-col items-center justify-center space-y-8 overscroll-none"
           >
             {SITE_DATA.navigation.map((link, i) => (
               <motion.div
