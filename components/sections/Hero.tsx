@@ -59,7 +59,7 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 1000], [0, 400]);
 
   return (
-    <section className="relative w-full min-h-[100svh] flex flex-col justify-center pt-32 pb-40 md:py-40 overflow-visible">
+    <section className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-visible pt-32 pb-40 lg:pt-40 lg:pb-48">
       {/* 1. Background Composition wrapped to contain parallax without breaking mobile scroll */}
       <div className="absolute inset-0 overflow-hidden z-0">
         <motion.div style={{ y }} className="absolute inset-x-0 -top-[400px] bottom-0 z-0 h-[calc(100svh+400px)] pointer-events-none">
@@ -86,7 +86,7 @@ export default function Hero() {
       </div>
 
       {/* 2. Main Content */}
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col justify-center">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -140,8 +140,11 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* 4. Mobile Stats Flow / Desktop Floating Stats Bar */}
-        <div className="mt-16 md:absolute md:-bottom-8 md:mt-0 left-0 right-0 z-20 md:px-12 w-full max-w-7xl mx-auto flex justify-center lg:justify-start">
+      </div>
+
+      {/* 4. Desktop Floating Stats Bar anchored to root section */}
+      <div className="mt-16 md:absolute md:-bottom-8 md:mt-0 left-0 w-full z-20 px-6 md:px-12">
+        <div className="w-full max-w-7xl mx-auto flex justify-center lg:justify-start">
           <motion.div
             variants={containerVariants}
             initial="hidden"
