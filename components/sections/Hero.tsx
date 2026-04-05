@@ -58,37 +58,39 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 1000], [0, 400]);
 
   return (
-    <section className="relative w-full h-[100svh] min-h-[600px] flex items-center justify-center overflow-hidden">
-      {/* 1. Background Composition */}
-      <motion.div style={{ y }} className="absolute inset-x-0 -top-[400px] bottom-0 z-0 h-[calc(100svh+400px)] pointer-events-none">
-        <Image 
-          src="/images/hero/hero-main.jpg"
-          alt="Rural schoolgirls in Zimbabwe"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        {/* Gradient Overlay: Navy/70% to transparent horizontally */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/60 to-transparent" />
-        
-        {/* Dot Grid Pattern Overlay */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: 'radial-gradient(circle at center, white 1.5px, transparent 1.5px)',
-            backgroundSize: '24px 24px'
-          }}
-        />
-      </motion.div>
+    <section className="relative w-full min-h-[100svh] flex items-center justify-center pt-24 pb-12 md:pt-16 md:pb-0 overflow-hidden">
+      {/* 1. Background Composition wrapped to contain parallax without breaking mobile scroll */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <motion.div style={{ y }} className="absolute inset-x-0 -top-[400px] bottom-0 z-0 h-[calc(100svh+400px)] pointer-events-none">
+          <Image 
+            src="/images/hero/hero-main.jpg"
+            alt="Rural schoolgirls in Zimbabwe"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          {/* Gradient Overlay: Darker on mobile for proper contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/60 md:via-navy/60 md:to-transparent" />
+          
+          {/* Dot Grid Pattern Overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: 'radial-gradient(circle at center, white 1.5px, transparent 1.5px)',
+              backgroundSize: '24px 24px'
+            }}
+          />
+        </motion.div>
+      </div>
 
       {/* 2. Main Content */}
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col justify-center h-full pt-16">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col justify-center h-full">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="w-full lg:w-[55%] flex flex-col items-start"
+          className="w-full lg:w-[60%] flex flex-col items-start"
         >
           {/* Pill Badge */}
           <motion.div
@@ -100,7 +102,7 @@ export default function Hero() {
 
           {/* Heading */}
           <motion.div variants={itemVariants} className="mb-6 relative">
-            <h1 className="font-display text-5xl md:text-[72px] leading-[1.05] text-white">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-[72px] leading-[1.1] md:leading-[1.05] text-white">
               Educating Rural <span className="relative inline-block">Girls<AnimatedUnderline /></span>.<br />
               Transforming Zimbabwe.
             </h1>
@@ -109,13 +111,13 @@ export default function Hero() {
           {/* Subheading */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed font-light"
+            className="text-base sm:text-lg md:text-xl text-slate-200 mb-10 leading-relaxed font-light drop-shadow-sm"
           >
             {SITE_DATA.missionStatement}
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
             <RippleButton
               className="w-full sm:w-auto px-8 py-3.5 bg-primary text-white font-bold rounded-lg shadow-lg border border-transparent transition-colors hover:bg-primary-light"
             >
@@ -126,20 +128,40 @@ export default function Hero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center"
+              className="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-white/80 text-white font-bold rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center"
             >
               Support Our Work
             </motion.button>
           </motion.div>
         </motion.div>
+
+        {/* 4. Mobile Stats Flow / Desktop Floating Stats Bar */}
+        <div className="mt-16 md:absolute md:-bottom-8 md:mt-0 left-0 right-0 z-20 md:px-12 w-full max-w-7xl mx-auto flex justify-center lg:justify-start">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="bg-white/10 backdrop-blur-md border border-white/20 border-l-[3px] border-l-primary-light px-6 py-4 rounded shadow-lg min-w-[200px]"
+              >
+                <h3 className="text-white font-display text-lg sm:text-xl whitespace-nowrap text-center sm:text-left">{stat.label}</h3>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
-      {/* 3. Floating Scroll Indicator */}
+      {/* 3. Floating Scroll Indicator (Hidden on mobile to save vertical space) */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-28 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center"
+        className="absolute bottom-16 md:bottom-28 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
@@ -148,26 +170,6 @@ export default function Hero() {
           <ChevronDown size={32} className="text-white/60" />
         </motion.div>
       </motion.div>
-
-      {/* 4. Floating Stats Bar Overlapping out of bounds */}
-      <div className="absolute -bottom-8 left-0 right-0 z-20 px-6 md:px-12 w-full max-w-7xl mx-auto flex justify-center lg:justify-start">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col md:flex-row gap-4"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="bg-white/10 backdrop-blur-md border border-white/20 border-l-[3px] border-l-primary-light px-6 py-4 rounded shadow-lg min-w-[200px]"
-            >
-              <h3 className="text-white font-display text-xl whitespace-nowrap">{stat.label}</h3>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
     </section>
   );
 }
