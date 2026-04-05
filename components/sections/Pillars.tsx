@@ -54,10 +54,19 @@ export default function Pillars() {
               <motion.div
                 key={pillar.title}
                 variants={cardVariants}
-                whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(42, 127, 202, 0.15), 0 8px 10px -6px rgba(42, 127, 202, 0.1)" }}
+                whileHover={{ y: -8, rotate: 1, boxShadow: "0 20px 25px -5px rgba(42, 127, 202, 0.15), 0 8px 10px -6px rgba(42, 127, 202, 0.1)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="relative bg-white rounded-2xl p-8 md:p-10 shadow-[0_4px_20px_-4px_rgba(42,127,202,0.08)] overflow-hidden cursor-default border border-slate-100"
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                  e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                }}
+                className="group relative bg-white rounded-2xl p-8 md:p-10 shadow-[0_4px_20px_-4px_rgba(42,127,202,0.08)] overflow-hidden cursor-default border border-slate-100"
               >
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 z-0"
+                  style={{ background: 'radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(42,127,202,0.06), transparent 40%)' }}
+                />
                 {/* Watermark Number */}
                 <div className="absolute -right-6 -bottom-10 font-display text-primary-light/10 text-[180px] leading-none select-none z-0 pointer-events-none">
                   {number}

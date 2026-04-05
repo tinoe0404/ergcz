@@ -74,11 +74,20 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-navy text-slate-300 pt-16 pb-6 px-6 md:px-12 w-full">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between md:items-start gap-12 lg:gap-24 mb-12">
+    <footer className="bg-navy text-slate-300 pt-16 pb-6 px-6 md:px-12 w-full overflow-hidden">
+      <motion.div 
+        className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between md:items-start gap-12 lg:gap-24 mb-12"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+      >
         
         {/* Left Column */}
-        <div className="flex-1">
+        <motion.div 
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} 
+          className="flex-1"
+        >
           <Link href="/" className="flex items-baseline space-x-1 mb-4">
             <span className="font-display text-3xl text-white tracking-wide">
               {SITE_DATA.orgName}
@@ -97,18 +106,24 @@ export default function Footer() {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Center Column */}
-        <div className="flex-[0.5] flex flex-col space-y-4 pt-1 md:pt-0">
+        <motion.div 
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} 
+          className="flex-[0.5] flex flex-col space-y-4 pt-1 md:pt-0"
+        >
           <h4 className="text-white font-display text-xl mb-2">Quick Links</h4>
           {SITE_DATA.navigation.map((link) => (
             <FooterLink key={link.name} href={link.href} name={link.name} />
           ))}
-        </div>
+        </motion.div>
 
         {/* Right Column */}
-        <div className="flex-1 flex flex-col space-y-5 pt-1 md:pt-0">
+        <motion.div 
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} 
+          className="flex-1 flex flex-col space-y-5 pt-1 md:pt-0"
+        >
           <h4 className="text-white font-display text-xl mb-2">Contact Us</h4>
           
           <div className="flex items-center space-x-3 text-sm">
@@ -125,9 +140,9 @@ export default function Footer() {
             <MapPin size={18} className="text-primary-light flex-shrink-0" />
             <span>{SITE_DATA.contact.address}</span>
           </div>
-        </div>
+        </motion.div>
 
-      </div>
+      </motion.div>
 
       {/* Bottom bar */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between border-t border-slate-700 pt-6 text-xs text-slate-500">

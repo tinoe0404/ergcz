@@ -35,16 +35,26 @@ export default function PillarsSummary() {
                 key={pillar.title}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
-                  rest: { opacity: 1, y: 0 },
-                  hover: { opacity: 1, y: 0 }
+                  rest: { opacity: 1, y: 0, rotate: 0 },
+                  hover: { opacity: 1, y: -8, rotate: 1 }
                 }}
                 initial="hidden"
                 whileInView="rest"
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ delay: idx * 0.15 }}
                 whileHover="hover"
-                className="snap-center shrink-0 w-[280px] md:w-auto relative"
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                  e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                }}
+                className="group snap-center shrink-0 w-[280px] md:w-auto relative overflow-hidden rounded-2xl"
               >
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 z-20"
+                  style={{ background: 'radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.15), transparent 40%)' }}
+                />
+                
                 <div className="absolute inset-0 bg-white rounded-2xl shadow-sm border border-slate-100 z-0" />
                 
                 <motion.div 

@@ -31,7 +31,21 @@ export default function KeyAreas() {
                   {number}
                 </span>
 
-                <div className="relative z-10 w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                <motion.div 
+                  className="relative z-10 w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden shadow-2xl group"
+                  whileHover={{ rotate: 1, y: -8 }}
+                  drag="x"
+                  dragConstraints={{ left: -15, right: 15 }}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                    e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                  }}
+                >
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 z-20"
+                    style={{ background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.3), transparent 40%)' }}
+                  />
                   <Image 
                     src={`/images/programs/program-${index + 1}.jpg`}
                     alt={area.title}
@@ -39,7 +53,7 @@ export default function KeyAreas() {
                     className="object-cover transition-transform duration-700 hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                </div>
+                </motion.div>
               </motion.div>
 
               {/* Content Side */}

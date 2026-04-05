@@ -32,7 +32,7 @@ const NavLink = ({ link, isActive }: { link: { name: string; href: string }; isA
       )}
       {isActive && (
         <motion.div
-          layoutId="navbar-active-indicator"
+          layoutId="activeIndicator"
           className="absolute left-0 right-0 -bottom-1 h-0.5 bg-primary"
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         />
@@ -86,12 +86,20 @@ export default function Navbar() {
             <NavLink key={link.name} link={link} isActive={pathname === link.href} />
           ))}
           
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div whileHover="hover" whileTap={{ scale: 0.95 }} className="inline-block relative">
             <Link 
               href="/donate" 
-              className="px-6 py-2 bg-gold text-navy font-bold text-sm rounded-full shadow-md"
+              className="relative overflow-hidden px-6 py-2 bg-gold text-navy font-bold text-sm rounded-full shadow-md inline-block block"
             >
-              Donate
+              <motion.div
+                variants={{
+                  initial: { x: "-100%" },
+                  hover: { x: "100%" }
+                }}
+                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/50 w-full"
+              />
+              <span className="relative z-10 transition-colors">Donate</span>
             </Link>
           </motion.div>
         </div>
@@ -140,14 +148,23 @@ export default function Navbar() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ delay: 0.2 + SITE_DATA.navigation.length * 0.1 }}
-              whileHover={{ scale: 1.05 }} 
+              whileHover="hover" 
               whileTap={{ scale: 0.95 }}
+              className="inline-block relative"
             >
               <Link
                 href="/donate"
-                className="mt-4 px-8 py-3 bg-gold text-navy font-bold text-lg rounded-full shadow-lg"
+                className="relative overflow-hidden mt-4 px-8 py-3 bg-gold text-navy font-bold text-lg rounded-full shadow-lg inline-block text-center"
               >
-                Donate
+                <motion.div
+                  variants={{
+                    initial: { x: "-100%" },
+                    hover: { x: "100%" }
+                  }}
+                  transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                  className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/50 w-full"
+                />
+                <span className="relative z-10">Donate</span>
               </Link>
             </motion.div>
           </motion.div>

@@ -13,7 +13,7 @@ export const Counter = ({ to, suffix, duration = 2.5 }: { to: number; suffix: st
 
   useEffect(() => {
     if (inView) {
-      animate(count, to, { duration, ease: "easeOut" });
+      animate(count, to, { duration, ease: [0.22, 1, 0.36, 1] });
     }
   }, [inView, count, to, duration]);
 

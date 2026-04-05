@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
+import { RippleButton } from "@/components/ui/RippleButton";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -52,10 +53,13 @@ const stats = [
 ];
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, 400]);
+
   return (
     <section className="relative w-full h-[100svh] min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* 1. Background Composition */}
-      <div className="absolute inset-0 z-0">
+      <motion.div style={{ y }} className="absolute inset-x-0 -top-[400px] bottom-0 z-0 h-[calc(100svh+400px)]">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url("/images/hero/hero-main.jpg")' }}
@@ -71,7 +75,7 @@ export default function Hero() {
             backgroundSize: '24px 24px'
           }}
         />
-      </div>
+      </motion.div>
 
       {/* 2. Main Content */}
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col justify-center h-full pt-16">
@@ -107,14 +111,12 @@ export default function Hero() {
 
           {/* CTAs */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto px-8 py-3.5 bg-primary text-white font-bold rounded-lg shadow-lg flex items-center justify-center space-x-2 border border-transparent transition-colors hover:bg-primary-light"
+            <RippleButton
+              className="w-full sm:w-auto px-8 py-3.5 bg-primary text-white font-bold rounded-lg shadow-lg border border-transparent transition-colors hover:bg-primary-light"
             >
               <span>Learn More</span>
               <ArrowRight size={18} />
-            </motion.button>
+            </RippleButton>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
