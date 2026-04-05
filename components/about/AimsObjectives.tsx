@@ -19,7 +19,7 @@ export default function AimsObjectives() {
       <div className="max-w-7xl mx-auto flex flex-col gap-24">
         
         {/* Aims Section */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 relative">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 relative overflow-hidden">
           {/* Left Decorative Heading */}
           <div className="lg:w-1/3 relative">
             <h2 className="font-display text-4xl md:text-5xl text-navy relative z-10 pt-4">

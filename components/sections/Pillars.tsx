@@ -68,7 +68,7 @@ export default function Pillars() {
                   style={{ background: 'radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(42,127,202,0.06), transparent 40%)' }}
                 />
                 {/* Watermark Number */}
-                <div className="absolute -right-6 -bottom-10 font-display text-primary-light/10 text-[180px] leading-none select-none z-0 pointer-events-none">
+                <div className="absolute -right-6 -bottom-10 font-display text-primary text-[180px] leading-none select-none z-0 pointer-events-none opacity-[0.06]">
                   {number}
                 </div>
 

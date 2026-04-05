@@ -25,7 +25,7 @@ const SocialIcon = ({ icon: Icon, href, name }: { icon: React.ElementType, href:
       onHoverEnd={() => setIsHovered(false)}
       whileHover={{ scale: 1.15, y: -2 }}
       whileTap={{ scale: 0.9 }}
-      className="p-2 border border-slate-700 rounded-full text-slate-300"
+      className="w-11 h-11 flex items-center justify-center border border-slate-700 rounded-full text-slate-300"
       animate={{
         color: isHovered ? "#F5A623" : "#cbd5e1",
         borderColor: isHovered ? "#F5A623" : "#334155",

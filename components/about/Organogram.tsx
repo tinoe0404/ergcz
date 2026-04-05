@@ -3,13 +3,18 @@
 import { motion } from "framer-motion";
 import { SITE_DATA } from "@/constants/data";
 
+const tierVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function Organogram() {
   const { board, executive, ancillary } = SITE_DATA.organogram || {};
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-off-white overflow-x-hidden">
+    <section className="py-24 px-6 md:px-12 bg-off-white overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -19,65 +24,88 @@ export default function Organogram() {
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
 
-        <motion.div 
-          className="w-full flex flex-col items-center relative py-8"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Vertical Main Connector line spanning from top block to bottom block */}
-          <div className="hidden md:block absolute top-[120px] bottom-[120px] left-1/2 w-0.5 bg-primary -translate-x-1/2 z-0" />
+        {/* Horizontally scrollable on mobile */}
+        <div className="w-full overflow-x-auto">
+          <motion.div
+            className="flex flex-col items-center relative py-8 min-w-[500px] md:min-w-0"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ staggerChildren: 0.2 }}
+          >
 
-          {/* Level 1: Board */}
-          <div className="relative z-10 w-full max-w-sm mb-16 md:mb-24">
-            <div className="bg-primary text-white p-6 rounded-xl shadow-lg relative border-2 border-primary">
-              <h3 className="font-display text-2xl mb-3 text-center">{board?.title}</h3>
-              <ul className="flex flex-wrap justify-center gap-2 text-sm text-primary-light/90">
-                {board?.roles?.map((role, i) => (
-                  <li key={i} className="bg-white/10 px-3 py-1 rounded-full">{role}</li>
-                ))}
-              </ul>
+            {/* TIER 1: Board of Directors */}
+            <motion.div variants={tierVariants} transition={{ duration: 0.6 }} className="relative z-10 w-full flex justify-center mb-0">
+              <div className="bg-primary text-white p-6 md:p-8 rounded-xl shadow-lg w-full max-w-2xl">
+                <h3 className="font-display text-2xl mb-4 text-center">{board?.title}</h3>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {board?.roles?.map((role, i) => (
+                    <span key={i} className="bg-white/20 text-white text-sm px-3 py-1 rounded-full">{role}</span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Connector: Tier 1 → Tier 2 */}
+            <div className="w-0.5 h-12 bg-primary mx-auto" />
+
+            {/* Horizontal branch line */}
+            <div className="relative w-full max-w-2xl mx-auto">
+              <div className="absolute top-0 left-1/4 right-1/4 h-0.5 bg-primary" />
+              {/* Left prong */}
+              <div className="absolute top-0 left-1/4 w-0.5 h-8 bg-primary" />
+              {/* Right prong */}
+              <div className="absolute top-0 right-1/4 w-0.5 h-8 bg-primary" />
             </div>
-            {/* Mobile connector */}
-            <div className="md:hidden absolute -bottom-16 left-1/2 w-0.5 h-16 bg-primary -translate-x-1/2 z-0" />
-          </div>
 
-          {/* Level 2: Executive */}
-          <div className="relative w-full max-w-4xl mb-16 md:mb-24 z-10 flex flex-col items-center">
-            {/* Horizontal Branching line for desktop */}
-            <div className="hidden md:block absolute -top-12 left-1/4 right-1/4 h-0.5 bg-primary z-0" />
-            {/* Prongs attaching horizontal line to boxes */}
-            <div className="hidden md:block absolute -top-12 left-1/4 w-0.5 h-12 bg-primary z-0" />
-            <div className="hidden md:block absolute -top-12 right-1/4 w-0.5 h-12 bg-primary z-0" />
+            {/* TIER 2: Executive Team */}
+            <motion.div variants={tierVariants} transition={{ duration: 0.6 }} className="relative z-10 w-full flex justify-center mt-8 mb-0">
+              <div className="bg-[#5BA4DC] text-white p-6 md:p-8 rounded-xl shadow-lg w-full max-w-xl">
+                <h3 className="font-display text-2xl mb-4 text-center">{executive?.title}</h3>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {executive?.roles?.map((role, i) => (
+                    <span key={i} className="bg-white/20 text-white text-sm px-3 py-1.5 rounded-full">{role}</span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
 
-            <div className="bg-primary-light text-navy p-6 rounded-xl shadow-lg w-full max-w-md relative bg-opacity-90 backdrop-blur-sm border border-primary/20">
-              <h3 className="font-display text-2xl mb-3 text-center">{executive?.title}</h3>
-              <ul className="grid grid-cols-2 gap-2 text-sm text-navy/80 font-medium">
-                {executive?.roles?.map((role, i) => (
-                  <li key={i} className="bg-white px-3 py-2 rounded shadow-sm text-center">{role}</li>
-                ))}
-              </ul>
+            {/* Connector: Tier 2 → Tier 3 */}
+            <div className="w-0.5 h-12 bg-primary mx-auto" />
+
+            {/* Horizontal branch line for 3 children */}
+            <div className="relative w-full max-w-3xl mx-auto">
+              <div className="absolute top-0 left-[16%] right-[16%] h-0.5 bg-primary" />
+              <div className="absolute top-0 left-[16%] w-0.5 h-8 bg-primary" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-8 bg-primary" />
+              <div className="absolute top-0 right-[16%] w-0.5 h-8 bg-primary" />
             </div>
-             {/* Mobile connector */}
-             <div className="md:hidden absolute -bottom-16 left-1/2 w-0.5 h-16 bg-primary -translate-x-1/2 z-0" />
-          </div>
 
-          {/* Level 3: Ancillary */}
-          <div className="relative z-10 w-full max-w-lg">
-            <div className="bg-sky text-navy p-6 rounded-xl shadow-lg border-2 border-primary-light relative">
-              <h3 className="font-display text-2xl mb-3 text-center">{ancillary?.title}</h3>
-              <ul className="flex flex-wrap justify-center gap-2 text-sm font-medium">
-                {ancillary?.roles?.map((role, i) => (
-                  <li key={i} className="bg-white border border-primary-light/50 px-3 py-1.5 rounded-full text-center">
-                    {role}
-                  </li>
+            {/* TIER 3: Ancillary Staff */}
+            <motion.div variants={tierVariants} transition={{ duration: 0.6 }} className="relative z-10 w-full mt-8">
+              <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto">
+                {ancillary?.roles?.slice(0, 3).map((role, i) => (
+                  <div key={i} className="bg-sky text-navy p-4 md:p-6 rounded-xl shadow-sm border border-primary/20 text-center">
+                    <p className="font-medium text-sm md:text-base">{role}</p>
+                  </div>
                 ))}
-              </ul>
-            </div>
-          </div>
+              </div>
+              {(ancillary?.roles?.length ?? 0) > 3 && (
+                <div className="flex justify-center gap-4 mt-4 max-w-3xl mx-auto">
+                  {ancillary?.roles?.slice(3).map((role, i) => (
+                    <div key={i} className="bg-sky text-navy p-4 md:p-6 rounded-xl shadow-sm border border-primary/20 text-center flex-1 max-w-[250px]">
+                      <p className="font-medium text-sm md:text-base">{role}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div className="mt-4">
+                <p className="text-center text-sm text-slate font-medium">{ancillary?.title}</p>
+              </div>
+            </motion.div>
 
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

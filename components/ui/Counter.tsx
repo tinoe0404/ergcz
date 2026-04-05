@@ -1,21 +1,36 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { useInView } from "framer-motion";
 
-export const Counter = ({ to, suffix, duration = 2.5 }: { to: number; suffix: string; duration?: number }) => {
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, Math.round);
-  const formatted = useTransform(rounded, (v) => v.toLocaleString() + suffix);
-  
-  const ref = useRef(null);
+export const Counter = ({ to, suffix }: { to: number; suffix: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
+  const hasAnimated = useRef(false);
+  const [display, setDisplay] = useState("0" + suffix);
 
   useEffect(() => {
-    if (inView) {
-      animate(count, to, { duration, ease: [0.22, 1, 0.36, 1] });
-    }
-  }, [inView, count, to, duration]);
+    if (!inView || hasAnimated.current) return;
+    hasAnimated.current = true;
 
-  return <motion.span ref={ref}>{formatted}</motion.span>;
+    const duration = 2000;
+    let start: number | null = null;
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    const step = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const elapsed = timestamp - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutCubic(progress);
+      const current = Math.round(easedProgress * to);
+      setDisplay(current.toLocaleString() + suffix);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  }, [inView, to, suffix]);
+
+  return <span ref={ref}>{display}</span>;
 };

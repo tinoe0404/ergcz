@@ -79,24 +79,29 @@ export const SITE_DATA = {
   ],
   keyAreasOfWork: [
     {
-      title: "Coding Bootcamps",
-      description: "Intensive workshops teaching programming fundamentals and digital literacy.",
+      title: "Access to Quality Education",
+      label: "Education Access",
+      description: "We work to ensure that the girl child in rural communities across Zimbabwe enroll, remain in school, and complete their primary, secondary and tertiary education through inclusive, safe and supportive learning environments.",
     },
     {
-      title: "Science Fairs",
-      description: "Annual events showcasing student projects and innovations in STEM.",
+      title: "Life & Vocational Skills",
+      label: "Skills Empowerment",
+      description: "We equip rural girl child with practical skills, digital literacy, leadership training, and entrepreneurship knowledge to help them become self-reliant and break the cycle of poverty.",
     },
     {
-      title: "Scholarship Programs",
-      description: "Financial support for outstanding students to pursue higher education in STEM.",
+      title: "Child Protection",
+      label: "Protection & Safety",
+      description: "We advocate for safe communities and schools by preventing child marriages, gender-based violence, exploitation, and all forms of abuse that hinder girl education and development.",
     },
     {
-      title: "Teacher Training",
-      description: "Professional development for educators to improve STEM instruction methodologies.",
+      title: "Sexual & Reproductive Health",
+      label: "Health Education",
+      description: "We ensure rural girls have access to accurate, age-appropriate sexual and reproductive health information to make informed decisions and stay in school.",
     },
     {
-      title: "Career Fairs",
-      description: "Connecting students with potential employers and educational institutions.",
+      title: "Community Engagement & Advocacy",
+      label: "Community",
+      description: "We work with parents, traditional leaders, schools, and local authorities in rural Zimbabwe to promote positive attitudes toward girls' education and gender equality.",
     },
   ],
   team: [
