@@ -94,8 +94,8 @@ export default function Hero() {
           {/* Heading — FIX 11: responsive font scale */}
           <motion.div variants={itemVariants} className="mb-6 relative">
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[72px] leading-tight text-white">
-              Educating Rural <span className="relative inline-block">Girls<AnimatedUnderline /></span>.<br />
-              Transforming Zimbabwe.
+              Educating Rural <span className="relative inline-block">Girl Child<AnimatedUnderline /></span><br />
+              in Zimbabwe.
             </h1>
           </motion.div>
 

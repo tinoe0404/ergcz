@@ -38,9 +38,9 @@ export const SITE_DATA = {
     }
   },
   contact: {
-    email: "info@ergcz.org",
-    phone: "+263 77 123 4567",
-    address: "Harare, Zimbabwe",
+    email: "tsaraichikiechikandira@gmail.com",
+    phone: "+263773077281",
+    address: "11 Lincoln Road,  Avondale,  Harare.  Zimbabwe",
   },
   socialLinks: [
     { name: "Facebook", url: "https://facebook.com/ergcz", icon: "facebook" },
@@ -51,7 +51,6 @@ export const SITE_DATA = {
   navigation: [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Programs", href: "/programs" },
     { name: "Partners", href: "/partners" },
     { name: "Contact", href: "/contact" },
   ],
