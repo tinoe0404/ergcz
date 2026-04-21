@@ -44,9 +44,9 @@ export const SITE_DATA = {
   },
   socialLinks: [
     { name: "Facebook", url: "https://facebook.com/ergcz", icon: "facebook" },
-    { name: "Twitter", url: "https://twitter.com/ergcz", icon: "twitter" },
-    { name: "LinkedIn", url: "https://linkedin.com/company/ergcz", icon: "linkedin" },
-    { name: "Instagram", url: "https://instagram.com/ergcz", icon: "instagram" },
+    { name: "Twitter", url: "https://x.com/EduGirlsZW", icon: "twitter" },
+    { name: "LinkedIn", url: "https://linkedin.com/in/rural-girls-education-zw-826b83404", icon: "linkedin" },
+    { name: "Instagram", url: "https://www.instagram.com/edugirlszw/", icon: "instagram" },
   ],
   navigation: [
     { name: "Home", href: "/" },
