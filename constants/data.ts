@@ -1,177 +1,163 @@
 export const SITE_DATA = {
-  orgName: "ERGCZ",
-  fullName: "Educating Rural Girl Child in Zimbabwe",
-  tagline: "Empowering Rural Girls Through STEM Education",
-  missionStatement: "To bridge the educational gap for rural girls in Zimbabwe by providing access to quality STEM education, resources, and mentorship, empowering them to become leaders and innovators in their communities.",
-  programsIntro: "Our programmatic approach is rooted in community collaboration and evidence-based interventions. By targeting the most critical barriers to education, we've developed a responsive framework that doesn't just deliver temporary relief, but instills long-term systemic capabilities within rural districts.",
-  visionStatement: "A Zimbabwe where every rural girl child has the opportunity, resources, and self-belief to excel in STEM fields and become a leader in her community.",
-  story: "Founded out of a deep recognized need in rural communities, ERGCZ began with a simple but powerful realization: talent is universal, but opportunity is not. We noted that rural Zimbabwean girls faced multiple intersecting barriers to receiving quality STEM education. A group of passionate educators and professionals came together to bridge this gap, determined to build a supportive ecosystem that empowers these young women to unlock their full potential and transform their communities.",
-  barriers: [
-    { title: "Cultural Beliefs", icon: "refresh-cw" },
-    { title: "Lack of Resources", icon: "x-circle" },
-    { title: "Limited Mentorship", icon: "user-minus" },
-    { title: "Political Instability", icon: "alert-triangle" },
-  ],
-  values: "Integrity, Empowerment, Excellence, Community, and Innovation.",
-  aims: [
-    "To provide comprehensive STEM education and materials to marginalized rural schools.",
-    "To establish robust mentorship networks connecting rural students with accomplished female professionals.",
-    "To advocate for policy changes that support gender parity in educational resource allocation.",
-  ],
-  objectives: [
-    "Equip 50 rural schools with modern science laboratory equipment by 2030.",
-    "Train 200 rural teachers in advanced STEM pedagogical methodologies.",
-    "Award full scholarships to 500 outstanding students to pursue higher education.",
-  ],
-  organogram: {
-    board: {
-      title: "Board of Directors",
-      roles: ["Chairperson", "Vice-Chairperson", "Secretary", "Treasurer", "Committee Members"],
-    },
-    executive: {
-      title: "Executive Team",
-      roles: ["Executive Director", "Head of Programs", "Head of Finance", "M&E Coordinator"],
-    },
-    ancillary: {
-      title: "Ancillary Staff",
-      roles: ["Field Officers", "Community Mobilizers", "Administrative Assistants", "Volunteers"],
-    }
-  },
+  orgName: "EmpowerHer Zimbabwe",
+  fullName: "EmpowerHer Zimbabwe Initiative",
+  tagline: "Empowering the Girl Child in Zimbabwe",
+  missionStatement: "To provide education, health support, and leadership opportunities to vulnerable girls.",
+  visionStatement: "A Zimbabwe where every girl is educated, confident, and empowered.",
+  aboutDescription: "We are dedicated to uplifting girls in Zimbabwe by providing access to education, health support, and life-changing opportunities. Our mission is to break barriers and build future female leaders.",
+  whoWeAre: "EmpowerHer Zimbabwe is a community-based initiative focused on empowering girls to reach their full potential.",
+  heroSubheading: "Creating opportunities for girls through education, health, and leadership.",
+  ctaCopy: "Your support can change a girl's future.",
   contact: {
     email: "tsaraichikiechikandira@gmail.com",
     phone: "+263773077281",
-    address: "11 Lincoln Road,  Avondale,  Harare.  Zimbabwe",
+    address: "11 Lincoln Road, Avondale, Harare. Zimbabwe",
   },
   socialLinks: [
     { name: "Facebook", url: "https://facebook.com/ergcz", icon: "facebook" },
     { name: "Twitter", url: "https://x.com/EduGirlsZW", icon: "twitter" },
-    { name: "LinkedIn", url: "https://linkedin.com/in/rural-girls-education-zw-826b83404", icon: "linkedin" },
-    { name: "Instagram", url: "https://www.instagram.com/edugirlszw/", icon: "instagram" },
   ],
   navigation: [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Partners", href: "/partners" },
+    { name: "Programs", href: "/programs" },
+    { name: "Impact", href: "/impact" },
+    { name: "Get Involved", href: "/get-involved" },
+    { name: "Blog", href: "/blog" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
   ],
-  pillars: [
+  coreValues: [
     {
-      title: "STEM Education",
-      description: "Providing quality science, technology, engineering, and mathematics education to rural girls.",
-      icon: "book-open",
+      title: "Equality",
+      description: "Every girl deserves equal access to education and opportunity.",
+      icon: "scale",
     },
     {
-      title: "Mentorship",
-      description: "Connecting students with female professionals in STEM fields for guidance and inspiration.",
-      icon: "users",
+      title: "Empowerment",
+      description: "Building confidence and skills for lifelong independence.",
+      icon: "zap",
     },
     {
-      title: "Resource Provision",
-      description: "Equipping schools with essential learning materials, laboratory equipment, and technology.",
-      icon: "laptop",
+      title: "Integrity",
+      description: "Transparent and accountable in everything we do.",
+      icon: "shield",
     },
     {
-      title: "Community Engagement",
-      description: "Working with parents and local leaders to foster a supportive environment for girls' education.",
-      icon: "heart",
-    },
-  ],
-  keyAreasOfWork: [
-    {
-      title: "Access to Quality Education",
-      label: "Education Access",
-      description: "We work to ensure that the girl child in rural communities across Zimbabwe enroll, remain in school, and complete their primary, secondary and tertiary education through inclusive, safe and supportive learning environments.",
-    },
-    {
-      title: "Life & Vocational Skills",
-      label: "Skills Empowerment",
-      description: "We equip rural girl child with practical skills, digital literacy, leadership training, and entrepreneurship knowledge to help them become self-reliant and break the cycle of poverty.",
-    },
-    {
-      title: "Child Protection",
-      label: "Protection & Safety",
-      description: "We advocate for safe communities and schools by preventing child marriages, gender-based violence, exploitation, and all forms of abuse that hinder girl education and development.",
-    },
-    {
-      title: "Sexual & Reproductive Health",
-      label: "Health Education",
-      description: "We ensure rural girls have access to accurate, age-appropriate sexual and reproductive health information to make informed decisions and stay in school.",
-    },
-    {
-      title: "Community Engagement & Advocacy",
-      label: "Community",
-      description: "We work with parents, traditional leaders, schools, and local authorities in rural Zimbabwe to promote positive attitudes toward girls' education and gender equality.",
+      title: "Community",
+      description: "Working together with local communities for lasting change.",
+      icon: "heart-handshake",
     },
   ],
-  team: [
+  programs: [
     {
-      name: "Jane Doe",
-      role: "Founder & Executive Director",
-      image: "/images/team/placeholder-1.jpg",
-      bio: "Passionate advocate for girls' education with over 10 years of experience in NGO management.",
+      title: "Education Support",
+      description: "Ensuring girls stay in school and thrive academically.",
+      icon: "graduation-cap",
+      items: [
+        "School fees assistance",
+        "Uniforms and books",
+        "Academic mentorship",
+      ],
     },
     {
-      name: "John Smith",
-      role: "Head of Programs",
-      image: "/images/team/placeholder-2.jpg",
-      bio: "Former educator dedicated to designing impactful STEM curricula for marginalized communities.",
+      title: "Health & Hygiene",
+      description: "Supporting girls' health and breaking taboos around menstrual hygiene.",
+      icon: "heart-pulse",
+      items: [
+        "Sanitary pads",
+        "Menstrual hygiene education",
+        "Reproductive health awareness",
+      ],
     },
     {
-      name: "Sarah Johnson",
-      role: "Community Outreach Coordinator",
-      image: "/images/team/placeholder-3.jpg",
-      bio: "Expert in building relationships with rural community leaders to ensure program success.",
+      title: "Leadership & Skills Training",
+      description: "Empowering girls to become leaders and entrepreneurs.",
+      icon: "trophy",
+      items: [
+        "Leadership workshops",
+        "Entrepreneurship training",
+        "Life skills development",
+      ],
+    },
+    {
+      title: "Community Awareness",
+      description: "Working with communities to protect and promote girls' rights.",
+      icon: "megaphone",
+      items: [
+        "End child marriage",
+        "Promote girls' education",
+        "Address gender-based violence",
+      ],
     },
   ],
-  partnershipPhilosophy: [
-    "ERGCZ believes that the barriers to rural STEM education are deeply interconnected. Addressing them requires a vast network of dedicated stakeholders working in unison—pooling resources, expertise, and community influence.",
-    "Our partnership framework is built on mutual accountability and shared vision. By working alongside government ministries, local leaders, educational bodies, and international sponsors, we ensure our interventions are both highly localized and globally scalable."
+  impactStats: [
+    { value: 500, suffix: "+", label: "Girls Supported", emoji: "🎓" },
+    { value: 10, suffix: "", label: "Communities Reached", emoji: "🏫" },
+    { value: 1000, suffix: "+", label: "School Supplies Distributed", emoji: "📚" },
+    { value: 50, suffix: "+", label: "Mentorship Sessions", emoji: "💬" },
   ],
-  partnerCategories: [
+  impactAchievements: "Our programs have helped hundreds of girls stay in school and gain confidence.",
+  successStory: {
+    quote: "Before joining the program, I almost dropped out of school. Now I want to become a teacher.",
+    author: "— Girl, Age 17",
+  },
+  keyResults: [
     {
-      title: "Government Partners",
-      partners: [
-        { name: "Ministry of Primary and Secondary Education", description: "Curriculum oversight and school authorizations." },
-        { name: "Digital Innovation Authority", description: "ICT infrastructure support for rural hubs." }
-      ]
+      title: "Increased School Attendance",
+      description: "More girls are attending school regularly thanks to our support programs.",
+      icon: "trending-up",
     },
     {
-      title: "Educational Institutions",
-      partners: [
-        { name: "University of Zimbabwe STEM Hub", description: "Advanced science mentorship networks." },
-        { name: "Midlands State University", description: "Teacher training and pedagogy labs." }
-      ]
+      title: "Reduced Dropout Rates",
+      description: "Fewer girls are dropping out of school with access to resources and mentorship.",
+      icon: "arrow-down-circle",
     },
     {
-      title: "Civil Society",
-      partners: [
-        { name: "Women's Coalition of Zimbabwe", description: "Community safeguarding and advocacy." },
-        { name: "Rural Empowerment Trust", description: "Logistical frameworks for district outreach." }
-      ]
+      title: "Improved Confidence & Leadership",
+      description: "Girls are developing leadership skills and confidence through our workshops.",
+      icon: "star",
     },
-    {
-      title: "International Partners",
-      partners: [
-        { name: "Global Education Fund", description: "Baseline program funding and scholarships." },
-        { name: "Tech for Good Initiative", description: "Laptops and tech laboratory provisioning." }
-      ]
-    }
   ],
-  partners: [
+  blogPosts: [
     {
-      name: "Tech for Good",
-      logo: "/images/partners/placeholder-1.png",
-      website: "https://example.com",
+      title: "Girl Child Education Campaign Launch",
+      excerpt: "We are excited to announce the launch of our new campaign focused on improving access to education for girls in rural Zimbabwe.",
+      date: "2025-05-15",
+      category: "Campaign",
     },
     {
-      name: "Global Education Fund",
-      logo: "/images/partners/placeholder-2.png",
-      website: "https://example.com",
+      title: "Community Outreach Program",
+      excerpt: "Our team visited 5 communities this month, engaging with local leaders and families to promote girls' education and well-being.",
+      date: "2025-04-28",
+      category: "Outreach",
     },
     {
-      name: "Zimbabwe Ministry of Education",
-      logo: "/images/partners/placeholder-3.png",
-      website: "https://example.com",
+      title: "Leadership Training Workshop",
+      excerpt: "Over 30 girls participated in our latest leadership training workshop, learning essential skills for personal and professional growth.",
+      date: "2025-04-10",
+      category: "Workshop",
     },
-  ]
+  ],
+  donationMethods: [
+    {
+      name: "EcoCash",
+      description: "Send your donation via EcoCash mobile money.",
+      details: "Merchant Code: XXXXX",
+      icon: "smartphone",
+    },
+    {
+      name: "Bank Transfer",
+      description: "Transfer directly to our bank account.",
+      details: "Account: XXXX-XXXX-XXXX | Bank: ZB Bank",
+      icon: "landmark",
+    },
+    {
+      name: "PayPal",
+      description: "Donate securely through PayPal.",
+      details: "donate@empowerherzim.org",
+      icon: "credit-card",
+    },
+  ],
+  galleryCategories: ["All", "School Activities", "Workshops", "Community Events", "Mentorship"],
 };

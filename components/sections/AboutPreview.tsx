@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { SITE_DATA } from "@/constants/data";
 
-export default function MissionStrip() {
+export default function AboutPreview() {
   return (
     <section className="w-full bg-primary py-16 px-6 md:px-12 flex flex-col items-center justify-center text-center overflow-hidden">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
@@ -14,10 +14,10 @@ export default function MissionStrip() {
            transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="font-display italic text-3xl md:text-[32px] text-white leading-relaxed mb-6">
-            &quot;{SITE_DATA.missionStatement}&quot;
+            &quot;{SITE_DATA.aboutDescription}&quot;
           </h2>
           <motion.div 
-            className="w-10 h-[3px] bg-gold rounded-full mx-auto"
+            className="w-10 h-[3px] bg-accent rounded-full mx-auto"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, amount: 0.5 }}

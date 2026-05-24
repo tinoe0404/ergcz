@@ -1,44 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 import { cn } from "@/lib/utils";
-import { useRef } from "react";
 
 const NavLink = ({ link, isActive }: { link: { name: string; href: string }; isActive: boolean }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <motion.div
-      className="relative px-2 py-1"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
-      <Link href={link.href} className={cn("text-sm font-medium z-10 relative", isActive ? "text-primary" : "text-navy")}>
-        {link.name}
-      </Link>
-      
-      {!isActive && (
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-          style={{ originX: 0 }}
-          className="absolute left-0 right-0 -bottom-1 h-0.5 bg-primary"
-        />
+    <Link 
+      href={link.href} 
+      className={cn(
+        "relative text-[13px] lg:text-sm font-semibold tracking-wide whitespace-nowrap transition-colors py-2 px-1",
+        isActive ? "text-primary" : "text-slate-600 hover:text-primary"
       )}
+    >
+      {link.name}
       {isActive && (
         <motion.div
-          layoutId="activeIndicator"
-          className="absolute left-0 right-0 -bottom-1 h-0.5 bg-primary"
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          layoutId="navbar-active-indicator"
+          className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded-t-full"
+          transition={{ type: "spring", stiffness: 350, damping: 30 }}
         />
       )}
-    </motion.div>
+    </Link>
   );
 };
 
@@ -48,7 +35,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 20);
@@ -58,109 +44,124 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
+  // Handle escape key to close mobile menu
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isMobileMenuOpen) setIsMobileMenuOpen(false);
-      if (e.key === 'Tab' && isMobileMenuOpen && menuRef.current) {
-        const focusableElements = menuRef.current.querySelectorAll('a[href], button');
-        const first = focusableElements[0] as HTMLElement;
-        const last = focusableElements[focusableElements.length - 1] as HTMLElement;
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
     };
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
-      document.addEventListener('keydown', handleKeyDown);
-      setTimeout(() => {
-        const first = menuRef.current?.querySelector('a[href]') as HTMLElement;
-        first?.focus();
-      }, 100);
+      document.addEventListener('keydown', handleEsc);
     } else {
       document.body.style.overflow = '';
-      buttonRef.current?.focus();
     }
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleEsc);
   }, [isMobileMenuOpen]);
 
   return (
     <>
-      <motion.nav
-        className="fixed top-0 w-full z-50 flex items-center justify-between px-6 md:px-12 py-4"
-        animate={{
-          backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.85)" : "rgba(255, 255, 255, 0)",
-          backdropFilter: isScrolled ? "blur(12px)" : "blur(0px)",
-          boxShadow: isScrolled ? "0 4px 6px -1px rgba(0, 0, 0, 0.05)" : "0 0px 0px 0px rgba(0, 0, 0, 0)",
-        }}
-        transition={{ duration: 0.3 }}
+      <motion.header
+        className={cn(
+          "fixed top-0 inset-x-0 z-50 flex items-center justify-center transition-all duration-300",
+          isScrolled ? "py-3" : "py-5"
+        )}
       >
-        {/* Logo Section */}
-        <Link href="/" className="flex flex-col relative z-20">
-          <div className="flex items-baseline space-x-1">
-            <span className="font-display text-2xl text-primary-dark tracking-wide">
-              {SITE_DATA.orgName}
-            </span>
-            <div className="w-2 h-2 rounded-full bg-primary" />
-          </div>
-          <span className="text-[10px] text-slate font-body mt-[-2px] uppercase tracking-wider">
-            Empowering Rural Girls
-          </span>
-        </Link>
-
-        <div className="hidden md:flex items-center space-x-8">
-          {SITE_DATA.navigation.map((link) => (
-            <NavLink key={link.name} link={link} isActive={pathname === link.href} />
-          ))}
-        </div>
-
-        {/* Mobile Toggle */}
-        <motion.button
-          ref={buttonRef}
-          whileTap={{ scale: 0.9 }}
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isMobileMenuOpen}
-          className="md:hidden z-20 text-navy focus:outline-none focus:ring-2 focus:ring-primary/50 rounded"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        <motion.nav
+          className={cn(
+            "w-full max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12 flex items-center justify-between transition-all duration-300 rounded-none md:rounded-full",
+            isScrolled ? "bg-white/90 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100/50 py-3 mx-4 md:mx-6" : "bg-transparent py-2"
+          )}
         >
-          {isMobileMenuOpen ? <X size={28} className="text-white" /> : <Menu size={28} />}
-        </motion.button>
-      </motion.nav>
+          {/* Logo Section */}
+          <Link href="/" className="flex flex-col relative z-20 group">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-sm shrink-0">
+                <span className="text-white font-display font-bold text-sm">EH</span>
+              </div>
+              <span className="font-display text-base xl:text-lg tracking-tight text-slate-900 whitespace-nowrap">
+                <span className="font-bold">EmpowerHer</span>
+                <span className="font-light ml-1 text-slate-600 hidden sm:inline">Zimbabwe</span>
+              </span>
+            </div>
+          </Link>
 
-      {/* Mobile Menu */}
+          {/* Desktop Links */}
+          <div className="hidden xl:flex items-center gap-5 2xl:gap-8">
+            {SITE_DATA.navigation.filter(link => link.name !== 'Home').map((link) => (
+              <NavLink key={link.name} link={link} isActive={pathname === link.href} />
+            ))}
+          </div>
+
+          {/* CTA & Mobile Toggle */}
+          <div className="flex items-center gap-4">
+            <Link 
+              href="/get-involved#donate" 
+              className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 bg-accent text-white font-semibold text-sm rounded-full hover:bg-accent-dark transition-all hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap"
+            >
+              Donate Now
+            </Link>
+
+            <button
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              className="xl:hidden relative z-50 p-2 -mr-2 text-slate-900 hover:text-primary transition-colors focus:outline-none"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <div className="relative w-6 h-5">
+                <span className={cn("absolute left-0 w-full h-0.5 bg-current transition-all duration-300", isMobileMenuOpen ? "top-2 rotate-45" : "top-0")} />
+                <span className={cn("absolute left-0 w-full h-0.5 bg-current transition-all duration-300", isMobileMenuOpen ? "opacity-0" : "top-2")} />
+                <span className={cn("absolute left-0 w-full h-0.5 bg-current transition-all duration-300", isMobileMenuOpen ? "top-2 -rotate-45" : "top-4")} />
+              </div>
+            </button>
+          </div>
+        </motion.nav>
+      </motion.header>
+
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             ref={menuRef}
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-            className="fixed inset-0 z-40 bg-navy flex flex-col items-center justify-center space-y-8 overscroll-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl xl:hidden flex flex-col pt-28 px-6 pb-8 overflow-y-auto"
           >
-            {SITE_DATA.navigation.map((link, i) => (
+            <div className="flex flex-col gap-6">
+              {SITE_DATA.navigation.map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ delay: i * 0.05 }}
+                >
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "font-display text-2xl font-medium block",
+                      pathname === link.href ? "text-primary" : "text-slate-800"
+                    )}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+              
               <motion.div
-                key={link.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ delay: 0.1 + i * 0.1 }}
+                transition={{ delay: SITE_DATA.navigation.length * 0.05 + 0.1 }}
+                className="mt-8 pt-8 border-t border-slate-200"
               >
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "font-display text-4xl",
-                    pathname === link.href ? "text-primary-light" : "text-white"
-                  )}
+                <Link 
+                  href="/get-involved#donate" 
+                  className="w-full flex items-center justify-center px-8 py-4 bg-accent text-white font-bold text-lg rounded-xl shadow-md"
                 >
-                  {link.name}
+                  Donate Now
                 </Link>
               </motion.div>
-            ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

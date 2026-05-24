@@ -1,23 +1,23 @@
 import type { Metadata } from 'next';
-import { DM_Serif_Display, Plus_Jakarta_Sans } from 'next/font/google';
+import { Poppins, Open_Sans } from 'next/font/google';
 import './globals.css';
 import { SITE_DATA } from '@/constants/data';
 
-const display = DM_Serif_Display({
-  weight: '400',
+const display = Poppins({
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-dm-serif-display',
+  variable: '--font-poppins',
 });
 
-const body = Plus_Jakarta_Sans({
+const body = Open_Sans({
   subsets: ['latin'],
-  variable: '--font-plus-jakarta-sans',
+  variable: '--font-open-sans',
 });
 
 import LayoutWrapper from '@/components/layout/LayoutWrapper';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ergcz.org'),
+  metadataBase: new URL('https://empowerherzim.org'),
   title: {
     template: `%s | ${SITE_DATA.orgName}`,
     default: SITE_DATA.fullName,
@@ -39,7 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="font-body text-slate bg-sky antialiased">
+      <body className="font-body text-slate-700 bg-white antialiased">
         <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>

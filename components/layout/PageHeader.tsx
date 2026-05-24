@@ -17,7 +17,7 @@ export default function PageHeader({ title, subtitle, breadcrumb }: PageHeaderPr
       <div 
         className="absolute inset-0 opacity-[0.05] pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(circle at center, #2A7FCA 1.5px, transparent 1.5px)',
+          backgroundImage: 'radial-gradient(circle at center, #A78BFA 1.5px, transparent 1.5px)',
           backgroundSize: '24px 24px'
         }}
       />
@@ -53,7 +53,7 @@ export default function PageHeader({ title, subtitle, breadcrumb }: PageHeaderPr
         >
           <motion.h1 
             variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-            className="font-display text-4xl sm:text-5xl lg:text-[56px] text-navy mb-6 leading-tight max-w-[90vw]"
+            className="font-display text-4xl sm:text-5xl lg:text-[56px] text-slate-900 mb-6 leading-tight max-w-[90vw]"
           >
             {title}
           </motion.h1>

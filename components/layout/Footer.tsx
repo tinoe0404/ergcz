@@ -75,7 +75,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-navy text-slate-300 pt-16 pb-6 px-6 md:px-12 w-full overflow-hidden">
+    <footer className="bg-primary-dark text-slate-300 pt-16 pb-6 px-6 md:px-12 w-full overflow-hidden">
       <motion.div 
         className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between md:items-start gap-12 lg:gap-24 mb-12"
         initial="hidden"
