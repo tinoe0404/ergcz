@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+
 import { SITE_DATA } from "@/constants/data";
 import { cn } from "@/lib/utils";
 
