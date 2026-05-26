@@ -60,7 +60,7 @@ export default function Hero() {
             alt="Rural schoolgirls in Zimbabwe"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-center blur-md"
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/95 via-primary-dark/85 to-primary/60 md:via-primary-dark/60 md:to-transparent" />

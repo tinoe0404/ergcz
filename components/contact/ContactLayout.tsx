@@ -17,6 +17,7 @@ const socialIcons = [
   { icon: Instagram, url: SITE_DATA.socialLinks?.find(i => i.name === 'Instagram')?.url || "#", color: "#E1306C" },
 ];
 
+
 const infoBlocks = [
   { icon: MapPin, label: "Location", value: SITE_DATA.contact.address },
   { icon: Mail, label: "Email Address", value: SITE_DATA.contact.email },
