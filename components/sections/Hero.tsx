@@ -56,11 +56,11 @@ export default function Hero() {
       <div className="absolute inset-0 overflow-hidden z-0">
         <motion.div style={{ y }} className="absolute inset-x-0 -top-[400px] bottom-0 z-0 h-[calc(100svh+400px)] pointer-events-none">
           <Image
-            src="/images/hero/hero-main.jpg"
+            src="/images/hero/hero-main-blurred.png"
             alt="Rural schoolgirls in Zimbabwe"
             fill
             priority
-            className="object-cover object-center blur-md"
+            className="object-cover object-center"
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/95 via-primary-dark/85 to-primary/60 md:via-primary-dark/60 md:to-transparent" />
