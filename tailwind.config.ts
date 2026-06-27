@@ -10,9 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#7C3AED',
-          light: '#A78BFA',
-          dark: '#5B21B6',
+          DEFAULT: '#2563EB',
+          light: '#60A5FA',
+          dark: '#1E3A8A',
         },
         accent: {
           DEFAULT: '#EA580C',
@@ -33,7 +33,7 @@ const config: Config = {
           900: '#0F172A',
         },
         white: '#FFFFFF',
-        'off-white': '#FAF5FF',
+        'off-white': '#F0F7FF',
       },
       fontFamily: {
         display: ['var(--font-poppins)', 'sans-serif'],

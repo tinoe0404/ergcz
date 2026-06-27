@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import PageHeader from "@/components/layout/PageHeader";
-import { Heart, Users, CreditCard, Smartphone, Landmark, Send } from "lucide-react";
+import { Heart, Users, CreditCard, Smartphone, Landmark, Send, Package, Gift, BookOpen, Shirt } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -16,7 +16,7 @@ export default function GetInvolvedPage() {
     <>
       <PageHeader 
         title="Get Involved" 
-        subtitle="Join our mission to empower the girl child in Zimbabwe." 
+        subtitle="Join our mission to empower rural girls through STEM education." 
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Get Involved" }]} 
       />
 
@@ -33,14 +33,14 @@ export default function GetInvolvedPage() {
             </div>
             <h2 className="font-display text-3xl sm:text-4xl text-slate-900 mb-6">Volunteer With Us</h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-8">
-              Join our team and make a difference. We are always looking for passionate individuals who want to mentor, assist in workshops, or help organize community events.
+              Join our team and make a difference. We are always looking for passionate individuals who want to mentor girls in STEM, assist in science workshops, or help with community outreach.
             </p>
             <ul className="space-y-4 mb-8">
               <li className="flex items-center gap-3 text-slate-700">
-                <div className="w-2 h-2 rounded-full bg-accent" /> Mentor a student
+                <div className="w-2 h-2 rounded-full bg-accent" /> Mentor a girl in STEM
               </li>
               <li className="flex items-center gap-3 text-slate-700">
-                <div className="w-2 h-2 rounded-full bg-accent" /> Assist in skills training
+                <div className="w-2 h-2 rounded-full bg-accent" /> Assist in science workshops
               </li>
               <li className="flex items-center gap-3 text-slate-700">
                 <div className="w-2 h-2 rounded-full bg-accent" /> Help with community outreach
@@ -79,7 +79,7 @@ export default function GetInvolvedPage() {
             </div>
             <h2 className="font-display text-3xl sm:text-4xl mb-6">Partner With Us</h2>
             <p className="text-white/80 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
-              We welcome NGOs, donors, and organizations like UNICEF and Stronger Impact Fund to collaborate with us. Together, we can scale our impact and reach more communities.
+              We partner with schools, the Ministry of Primary and Secondary Education (MoPSE), local women organizations, and civil societies. Together, we can scale our impact and reach more rural communities.
             </p>
             <a href={`mailto:${SITE_DATA.contact.email}`} className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-dark font-bold rounded-lg shadow-lg hover:bg-slate-100 transition-colors">
               <Send className="w-5 h-5" /> Contact Partnerships
@@ -99,7 +99,7 @@ export default function GetInvolvedPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 max-w-md mx-auto gap-8">
             {SITE_DATA.donationMethods.map((method, idx) => {
               const Icon = iconMap[method.icon] || CreditCard;
               return (
@@ -123,6 +123,60 @@ export default function GetInvolvedPage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* In-Kind Donations Section */}
+      <section id="donate-items" className="py-24 px-6 md:px-12 bg-white scroll-mt-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block text-accent font-body text-sm font-semibold uppercase tracking-widest mb-4">Donate Items</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-slate-900 mb-6">Give What You Can</h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Beyond financial contributions, you can donate essential items that directly support girls in need. Every item makes a difference.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { icon: Gift, title: "Sanitary Pads", description: "Help girls stay in school by providing menstrual hygiene products." },
+              { icon: Shirt, title: "Clothes & Uniforms", description: "Donate clean clothes and school uniforms for young girls." },
+              { icon: BookOpen, title: "School Supplies", description: "Books, stationery, bags, and other educational materials." },
+              { icon: Package, title: "Care Packages", description: "Toiletries, blankets, shoes, and other essentials." },
+            ].map((item, idx) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-off-white rounded-2xl p-6 border border-slate-100 text-center hover:shadow-md transition-shadow"
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+                  <item.icon className="text-primary w-7 h-7" />
+                </div>
+                <h3 className="font-display text-lg text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-slate-600 text-sm">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center bg-off-white rounded-2xl p-8 border border-slate-100 max-w-2xl mx-auto"
+          >
+            <p className="text-slate-700 mb-4">
+              To arrange a drop-off or collection, please get in touch with us.
+            </p>
+            <a
+              href={`mailto:${SITE_DATA.contact.email}`}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors"
+            >
+              <Send className="w-4 h-4" /> Contact Us to Donate Items
+            </a>
+          </motion.div>
         </div>
       </section>
     </>

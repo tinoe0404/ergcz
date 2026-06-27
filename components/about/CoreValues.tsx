@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Scale, Zap, Shield, HeartHandshake } from "lucide-react";
+import { Brain, Users, MessageCircle, Lightbulb } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 
 const iconMap: Record<string, React.ElementType> = {
-  "scale": Scale,
-  "zap": Zap,
-  "shield": Shield,
-  "heart-handshake": HeartHandshake,
+  "brain": Brain,
+  "users": Users,
+  "message-circle": MessageCircle,
+  "lightbulb": Lightbulb,
 };
 
 export default function CoreValues() {
@@ -22,12 +22,13 @@ export default function CoreValues() {
           viewport={{ once: true, amount: 0.5 }}
         >
           <h2 className="font-display text-4xl text-slate-900 mb-4">Our Core Values</h2>
-          <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">The 4 C&apos;s that guide everything we do.</p>
+          <div className="w-16 h-1 bg-primary mx-auto rounded-full mt-4" />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {SITE_DATA.coreValues.map((value, idx) => {
-            const Icon = iconMap[value.icon] || HeartHandshake;
+            const Icon = iconMap[value.icon] || Lightbulb;
             return (
               <motion.div
                 key={value.title}

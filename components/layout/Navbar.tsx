@@ -76,11 +76,10 @@ export default function Navbar() {
           <Link href="/" className="flex flex-col relative z-20 group">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-sm shrink-0">
-                <span className="text-white font-display font-bold text-sm">EH</span>
+                <span className="text-white font-display font-bold text-sm">ER</span>
               </div>
               <span className="font-display text-base xl:text-lg tracking-tight text-slate-900 whitespace-nowrap">
-                <span className="font-bold">EmpowerHer</span>
-                <span className="font-light ml-1 text-slate-600 hidden sm:inline">Zimbabwe</span>
+                <span className="font-bold">ERGCZ</span>
               </span>
             </div>
           </Link>

@@ -10,7 +10,7 @@ import { X } from "lucide-react";
 const galleryItems = Array.from({ length: 12 }).map((_, i) => ({
   id: i,
   category: SITE_DATA.galleryCategories[(i % (SITE_DATA.galleryCategories.length - 1)) + 1],
-  title: `EmpowerHer Activity ${i + 1}`,
+  title: `ERGCZ Activity ${i + 1}`,
 }));
 
 export default function GalleryPage() {

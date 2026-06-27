@@ -1,14 +1,14 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { GraduationCap, HeartPulse, Trophy, Megaphone } from "lucide-react";
+import { DoorOpen, Megaphone, ShieldCheck, Trophy } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 
 const iconMap: Record<string, React.ElementType> = {
-  "graduation-cap": GraduationCap,
-  "heart-pulse": HeartPulse,
-  "trophy": Trophy,
+  "door-open": DoorOpen,
   "megaphone": Megaphone,
+  "shield-check": ShieldCheck,
+  "trophy": Trophy,
 };
 
 const containerVariants: Variants = {
@@ -36,7 +36,7 @@ export default function ProgramsOverview() {
         >
           <h2 className="font-display text-4xl text-slate-900 mb-4">Our Programs</h2>
           <div className="w-16 h-1 bg-primary mx-auto mb-6 rounded-full" />
-          <p className="text-slate-600 text-lg">A holistic approach to empowering the next generation of female leaders.</p>
+          <p className="text-slate-600 text-lg">Our four pillars driving STEM education for rural girls.</p>
         </motion.div>
 
         <motion.div
@@ -47,14 +47,14 @@ export default function ProgramsOverview() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full"
         >
           {SITE_DATA.programs.map((program, idx) => {
-            const Icon = iconMap[program.icon] || GraduationCap;
+            const Icon = iconMap[program.icon] || DoorOpen;
             const number = String(idx + 1).padStart(2, '0');
 
             return (
               <motion.div
                 key={program.title}
                 variants={cardVariants}
-                whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(124, 58, 237, 0.15), 0 8px 10px -6px rgba(124, 58, 237, 0.1)" }}
+                whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(37, 99, 235, 0.15), 0 8px 10px -6px rgba(37, 99, 235, 0.1)" }}
                 className="group relative bg-white rounded-2xl p-6 shadow-sm border border-slate-100 overflow-hidden"
               >
                 <div className="absolute -right-4 -bottom-8 font-display text-primary text-[120px] leading-none select-none z-0 pointer-events-none opacity-[0.03]">

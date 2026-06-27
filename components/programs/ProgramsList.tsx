@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, HeartPulse, Trophy, Megaphone, CheckCircle2 } from "lucide-react";
+import { DoorOpen, Megaphone, ShieldCheck, Trophy, CheckCircle2 } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 
 const iconMap: Record<string, React.ElementType> = {
-  "graduation-cap": GraduationCap,
-  "heart-pulse": HeartPulse,
-  "trophy": Trophy,
+  "door-open": DoorOpen,
   "megaphone": Megaphone,
+  "shield-check": ShieldCheck,
+  "trophy": Trophy,
 };
 
 export default function ProgramsList() {
@@ -16,7 +16,7 @@ export default function ProgramsList() {
     <section className="py-24 px-6 md:px-12 bg-off-white">
       <div className="max-w-6xl mx-auto flex flex-col gap-24">
         {SITE_DATA.programs.map((program, index) => {
-          const Icon = iconMap[program.icon] || GraduationCap;
+          const Icon = iconMap[program.icon] || DoorOpen;
           const isEven = index % 2 === 0;
 
           return (
@@ -33,7 +33,6 @@ export default function ProgramsList() {
               >
                 <div className={`absolute top-4 ${isEven ? 'left-4 right-[-16px]' : 'right-4 left-[-16px]'} bottom-[-16px] border-[12px] border-primary-light/30 rounded-xl z-0`} />
                 <div className="relative z-10 w-full aspect-square md:aspect-[4/3] rounded-xl overflow-hidden shadow-lg bg-slate-100 flex items-center justify-center">
-                   {/* Fallback pattern since we don't have images for programs yet */}
                    <div className="absolute inset-0 bg-primary-dark opacity-10" />
                    <Icon className="w-32 h-32 text-primary opacity-20" />
                 </div>

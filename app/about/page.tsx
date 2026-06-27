@@ -10,7 +10,7 @@ export default function AboutPage() {
     <>
       <PageHeader 
         title="About Us" 
-        subtitle="Learn about our journey and mission to empower girls in Zimbabwe." 
+        subtitle="Learn about our mission to empower rural girls through STEM education." 
         breadcrumb={[{ label: "Home", href: "/" }, { label: "About Us" }]} 
       />
       <WhoWeAre />

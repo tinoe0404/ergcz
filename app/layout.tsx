@@ -17,7 +17,7 @@ const body = Open_Sans({
 import LayoutWrapper from '@/components/layout/LayoutWrapper';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://empowerherzim.org'),
+  metadataBase: new URL('https://ergcz.org'),
   title: {
     template: `%s | ${SITE_DATA.orgName}`,
     default: SITE_DATA.fullName,

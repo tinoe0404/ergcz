@@ -14,7 +14,7 @@ export default function ProgramsIntro() {
         >
           <span className="inline-block text-accent font-body text-sm font-semibold uppercase tracking-widest mb-4">Our Approach</span>
           <h2 className="font-display text-3xl sm:text-4xl text-slate-900 mb-8 leading-relaxed">
-            We focus on four core pillars that address the most critical barriers to education and empowerment for girls in Zimbabwe.
+            We operate through four core pillars that address the most critical barriers to STEM education for rural girls in Zimbabwe.
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>

@@ -10,7 +10,7 @@ export default function ImpactCounter() {
       <div 
         className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `linear-gradient(to right, #A78BFA 1px, transparent 1px), linear-gradient(to bottom, #A78BFA 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(to right, #60A5FA 1px, transparent 1px), linear-gradient(to bottom, #60A5FA 1px, transparent 1px)`,
           backgroundSize: '40px 40px'
         }}
       />

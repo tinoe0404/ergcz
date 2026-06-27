@@ -10,7 +10,7 @@ export default function ProgramsPage() {
     <>
       <PageHeader 
         title="Our Programs" 
-        subtitle="Comprehensive initiatives designed to transform education and opportunities for girls." 
+        subtitle="Our four pillars driving STEM education for rural girls in Zimbabwe." 
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Programs" }]} 
       />
       <ProgramsIntro />

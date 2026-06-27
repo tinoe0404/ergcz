@@ -85,13 +85,12 @@ export default function Hero() {
             variants={itemVariants}
             className="px-4 py-1.5 mb-6 rounded-full bg-accent text-white font-bold text-xs uppercase tracking-widest shadow-sm"
           >
-            {SITE_DATA.orgName}
+            Educating Rural Girl Child in Zimbabwe
           </motion.div>
 
           <motion.div variants={itemVariants} className="mb-6 relative">
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[72px] leading-tight text-white">
-              Empowering the <span className="relative inline-block">Girl Child<AnimatedUnderline /></span><br />
-              in Zimbabwe.
+              Empowering Rural Girls Through <span className="relative inline-block">STEM<AnimatedUnderline /></span>
             </h1>
           </motion.div>
 
