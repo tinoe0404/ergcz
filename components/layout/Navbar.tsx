@@ -137,6 +137,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
                       "font-display text-2xl font-medium block",
                       pathname === link.href ? "text-primary" : "text-slate-800"
@@ -155,6 +156,7 @@ export default function Navbar() {
               >
                 <Link 
                   href="/get-involved#donate" 
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="w-full flex items-center justify-center px-8 py-4 bg-accent text-white font-bold text-lg rounded-xl shadow-md"
                 >
                   Donate Now
