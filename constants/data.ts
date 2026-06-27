@@ -1,4 +1,6 @@
-export const SITE_DATA = {
+import { SiteData } from "@/types";
+
+export const SITE_DATA: SiteData = {
   orgName: "ERGCZ",
   fullName: "Educating Rural Girl Child in Zimbabwe",
   tagline: "Empowering Rural Girls Through STEM Education",
