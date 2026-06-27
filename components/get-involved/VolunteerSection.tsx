@@ -1,3 +1,5 @@
+"use client";
+
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Users, Send } from "lucide-react";
 
