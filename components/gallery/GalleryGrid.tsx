@@ -5,12 +5,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { SITE_DATA } from "@/constants/data";
 
-// Placeholder data for gallery images
-const galleryItems = Array.from({ length: 12 }).map((_, i) => ({
-  id: i,
-  category: SITE_DATA.galleryCategories[(i % (SITE_DATA.galleryCategories.length - 1)) + 1],
-  title: `ERGCZ Activity ${i + 1}`,
-}));
+import Image from "next/image";
+
+// Real data for gallery images
+const galleryItems = [
+  {
+    id: 1,
+    category: "Community Events",
+    title: "Participated in donations to Jairosi Jiri.",
+    image: "/images/gallery/jairosi-jiri-donation-1.jpeg",
+  }
+];
 
 export function GalleryGrid() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -55,13 +60,12 @@ export function GalleryGrid() {
                 className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group bg-slate-100"
                 onClick={() => setSelectedImage(item)}
               >
+                <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary-dark/80 transition-colors duration-300 z-10" />
                 <div className="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                   <span className="text-accent text-xs font-bold uppercase tracking-wider mb-2">{item.category}</span>
                   <h3 className="text-white font-display text-lg">{item.title}</h3>
                 </div>
-                {/* Decorative placeholder pattern */}
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary to-transparent" />
               </motion.div>
             ))}
           </AnimatePresence>
@@ -88,13 +92,13 @@ export function GalleryGrid() {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="relative w-full max-w-4xl aspect-[4/3] md:aspect-video bg-slate-800 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center"
+              className="relative w-full max-w-4xl aspect-[4/3] md:aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-slate-700 mx-auto mb-4 animate-pulse" />
-                <p className="text-slate-400 font-body">Image coming soon</p>
-                <p className="text-white font-display text-xl mt-2">{selectedImage.title}</p>
+              <Image src={selectedImage.image} alt={selectedImage.title} fill className="object-contain" sizes="100vw" />
+              <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 to-transparent z-10">
+                <p className="text-white font-display text-2xl">{selectedImage.title}</p>
+                <p className="text-accent text-sm uppercase tracking-wider mt-1">{selectedImage.category}</p>
               </div>
             </motion.div>
           </motion.div>

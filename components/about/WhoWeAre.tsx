@@ -19,10 +19,7 @@ export default function WhoWeAre() {
           <h2 className="font-display text-3xl sm:text-4xl text-slate-900 mb-6 leading-relaxed">
             {SITE_DATA.whoWeAre}
           </h2>
-          <p className="text-slate-600 text-lg leading-relaxed mb-6">
-            {SITE_DATA.aboutDescription}
-          </p>
-          <div className="w-16 h-1 bg-primary rounded-full" />
+          <div className="w-16 h-1 bg-primary rounded-full mt-2" />
         </motion.div>
 
         <motion.div

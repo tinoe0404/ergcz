@@ -1,5 +1,6 @@
 import PageHeader from "@/components/layout/PageHeader";
 import WhoWeAre from "@/components/about/WhoWeAre";
+import OurBackground from "@/components/about/OurBackground";
 import MissionVision from "@/components/about/MissionVision";
 import CoreValues from "@/components/about/CoreValues";
 
@@ -14,6 +15,7 @@ export default function AboutPage() {
         breadcrumb={[{ label: "Home", href: "/" }, { label: "About Us" }]} 
       />
       <WhoWeAre />
+      <OurBackground />
       <MissionVision />
       <CoreValues />
     </>

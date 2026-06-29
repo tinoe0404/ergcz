@@ -61,6 +61,7 @@ export interface SiteData {
   visionStatement: string;
   aboutDescription: string;
   whoWeAre: string;
+  backgroundStory?: string[];
   heroSubheading: string;
   ctaCopy: string;
   contact: ContactInfo;

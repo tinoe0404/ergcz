@@ -5,6 +5,7 @@ import { MotionConfig } from 'framer-motion';
 
 const Navbar = dynamic(() => import('./Navbar'), { ssr: false });
 const Footer = dynamic(() => import('./Footer'), { ssr: false });
+const WhatsAppButton = dynamic(() => import('./WhatsAppButton'), { ssr: false });
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -15,6 +16,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
       </div>
     </MotionConfig>
   );

@@ -8,6 +8,10 @@ export const SITE_DATA: SiteData = {
   visionStatement: "Better quality of life through practice, knowledge application, problem solving, innovative mindset and use of modern digital technologies by rural girls.",
   aboutDescription: "Educating Rural Girl Child in Zimbabwe (ERGCZ) is a Non-Governmental Organization established with the primary goal of empowering the rural girl child in Zimbabwe through science education. The organization was founded in response to the low participation of girls from rural areas in Science, Technology, Engineering and Mathematics (STEM) subjects.",
   whoWeAre: "ERGCZ is a Non-Governmental Organization dedicated to empowering rural girls in Zimbabwe through quality science education, mentorship, and community engagement.",
+  backgroundStory: [
+    "The Empowering the Rural Girl Child Zimbabwe (ERGCZ) was established in November 2024 by Mr. Tsarai Chikandira, a dedicated teacher with over 10 years of teaching experience. Throughout his career, Mr. Chikandira observed several challenges affecting the education and well-being of girls, particularly in rural communities. These included low participation of girls in Science, Technology, Engineering, and Mathematics (STEM) subjects, early child marriages, school dropouts, various forms of abuse, and cultural barriers that prevent girls from reaching their full potential.",
+    "Driven by a passion to create positive change, Mr. Chikandira founded ERGCZ to empower and support the girl child through education, mentorship, advocacy, and community engagement. The organisation is committed to promoting equal opportunities for girls, encouraging their participation in STEM, protecting their rights, and enabling them to become confident, educated, and productive members of society."
+  ],
   heroSubheading: "Inspiring rural girls to pursue careers in Science, Technology, Engineering and Mathematics (STEM) through education, mentorship, and community support.",
   ctaCopy: "Your support can change a rural girl's future in STEM.",
   contact: {
@@ -161,5 +165,5 @@ export const SITE_DATA: SiteData = {
       icon: "smartphone",
     },
   ],
-  galleryCategories: ["All", "STEM Workshops", "School Activities", "Community Events", "Mentorship"],
+  galleryCategories: ["All", "STEM Workshops", "School Activities", "Community Events", "Mentorship", "SRHR"],
 };
